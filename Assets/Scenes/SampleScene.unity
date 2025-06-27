@@ -162,7 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5def2eed424fda46a256b73011a1171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _exploder: {fileID: 1160216758}
   _cubes:
   - {fileID: 989620095}
   - {fileID: 29448858}
@@ -194,6 +193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube1
       objectReference: {fileID: 0}
+    - target: {fileID: 1312564202762661424, guid: e438e65bde4a5ea42b7266c8876252be, type: 3}
+      propertyPath: _exploder
+      value: 
+      objectReference: {fileID: 1160216758}
     - target: {fileID: 4934877827398448606, guid: e438e65bde4a5ea42b7266c8876252be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.01
@@ -914,6 +917,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube2
       objectReference: {fileID: 0}
+    - target: {fileID: 1312564202762661424, guid: e438e65bde4a5ea42b7266c8876252be, type: 3}
+      propertyPath: _exploder
+      value: 
+      objectReference: {fileID: 1160216758}
     - target: {fileID: 4934877827398448606, guid: e438e65bde4a5ea42b7266c8876252be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.25
@@ -982,6 +989,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube3
       objectReference: {fileID: 0}
+    - target: {fileID: 1312564202762661424, guid: e438e65bde4a5ea42b7266c8876252be, type: 3}
+      propertyPath: _exploder
+      value: 
+      objectReference: {fileID: 1160216758}
     - target: {fileID: 4934877827398448606, guid: e438e65bde4a5ea42b7266c8876252be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.6

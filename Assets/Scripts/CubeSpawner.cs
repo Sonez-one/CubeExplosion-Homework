@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class CubeSpawner : MonoBehaviour
 {
-    [SerializeField] private Exploder _exploder;
     [SerializeField] private List<Cube> _cubes;
 
     private readonly int _minCubeValue = 2;
@@ -48,7 +47,6 @@ public class CubeSpawner : MonoBehaviour
 
             _cubes.Add(cube);
             cube.Init(splitChance / _chanceDivider);
-            _exploder.Explode(cube.CubeRigidbody);
         }
     }
 }
