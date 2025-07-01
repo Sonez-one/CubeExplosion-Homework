@@ -18,7 +18,7 @@ public class CubeSpawner : MonoBehaviour
         if (_cubes != null)
         {
             foreach (var cube in _cubes)
-                cube.OnCubeClicking += Spawn;
+                cube.OnCubeClicked += Spawn;
         }
     }
 
@@ -27,7 +27,7 @@ public class CubeSpawner : MonoBehaviour
         foreach (var cube in _cubes)
         {
             if (cube != null)
-                cube.OnCubeClicking -= Spawn;
+                cube.OnCubeClicked -= Spawn;
         }
     }
 
@@ -39,7 +39,7 @@ public class CubeSpawner : MonoBehaviour
 
         Cube newCube = Instantiate(_cubePrefab, cube.transform.position, Quaternion.identity);
         newCube.Construct(cube.transform.position, newScale, newSplitChance, newGeneration);
-        newCube.OnCubeClicking += Spawn;
+        newCube.OnCubeClicked += Spawn;
 
         return newCube;
     }
@@ -58,7 +58,7 @@ public class CubeSpawner : MonoBehaviour
 
     private void Spawn(Cube explodedCube)
     {
-        explodedCube.OnCubeClicking -= Spawn;
+        explodedCube.OnCubeClicked -= Spawn;
 
         if (CanSplit(explodedCube))
         {

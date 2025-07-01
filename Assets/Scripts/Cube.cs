@@ -11,7 +11,7 @@ public class Cube : MonoBehaviour
 
     private Renderer _renderer;
 
-    public event Action<Cube> OnCubeClicking;
+    public event Action<Cube> OnCubeClicked;
 
     public void Construct(Vector3 position, Vector3 scale, float splitChance, float generation)
     {
@@ -30,7 +30,7 @@ public class Cube : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        OnCubeClicking?.Invoke(this);
+        OnCubeClicked?.Invoke(this);
 
         Destroy(gameObject);
     }
