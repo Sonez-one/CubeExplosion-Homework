@@ -11,11 +11,11 @@ public class Exploder : MonoBehaviour
         cube.AddExplosionForce(_explosionForce, cube.position, _explosionRadius);
     }
 
-    public void Explode(Rigidbody cube, float cubeScale)
+    public void Explode(Rigidbody cube, float generation)
     {
         foreach (Rigidbody explodableObject in GetExplodableObjects(cube))
         {
-            explodableObject.AddExplosionForce(_explosionForce / cubeScale, cube.position, _explosionRadius / cubeScale);
+            explodableObject.AddExplosionForce(_explosionForce * generation, cube.position, _explosionRadius * generation);
         }
     }
 
