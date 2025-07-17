@@ -9,9 +9,10 @@ public class Cube : MonoBehaviour
     public float Generation { get; private set; }
     public Rigidbody CubeRigidbody { get; private set; }
 
-    private Renderer _renderer;
+    private readonly float _maxSplitChance = 100f;
 
-    public event Action<Cube> OnCubeClicked;
+    private ColorChanger _colorChanger;
+    private Renderer _renderer;
 
     public void Construct(Vector3 position, Vector3 scale, float splitChance, float generation)
     {
@@ -19,19 +20,18 @@ public class Cube : MonoBehaviour
         transform.localScale = scale;
         CurrentSplitChance = splitChance;
         Generation = generation;
-        _renderer.material.color = UnityEngine.Random.ColorHSV(0f, 1f, 0.1f, 1f, 0.5f, 1f);
+
+        Color color = _colorChanger.GenerateColor();
+        _renderer.material.color = color;
     }
+
+    public bool CanSplit(Cube cube)
+        => UnityEngine.Random.Range(0, _maxSplitChance) <= cube.CurrentSplitChance;
 
     private void Awake()
     {
         _renderer = GetComponent<Renderer>();
         CubeRigidbody = GetComponent<Rigidbody>();
-    }
-
-    private void OnMouseUpAsButton()
-    {
-        OnCubeClicked?.Invoke(this);
-
-        Destroy(gameObject);
+        _colorChanger = GetComponent<ColorChanger>();
     }
 }
