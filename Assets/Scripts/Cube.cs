@@ -1,37 +1,33 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Renderer))]
 [RequireComponent(typeof(Rigidbody))]
 public class Cube : MonoBehaviour
 {
-    public float CurrentSplitChance { get; private set; } = 100f;
-    public float Generation { get; private set; }
-    public Rigidbody CubeRigidbody { get; private set; }
-
     private readonly float _maxSplitChance = 100f;
 
-    private ColorChanger _colorChanger;
     private Renderer _renderer;
 
-    public void Construct(Vector3 position, Vector3 scale, float splitChance, float generation)
+    public float CurrentSplitChance { get; private set; } = 100f;
+    public int Generation { get; private set; }
+    public Rigidbody Rigidbody { get; private set; }
+
+    private void Awake()
+    {
+        _renderer = GetComponent<Renderer>();
+        Rigidbody = GetComponent<Rigidbody>();
+
+        _renderer.material.color = Random.ColorHSV(0f, 1f, 0.1f, 1f, 0.5f, 1f);
+    }
+
+    public void Construct(Vector3 position, Vector3 scale, float splitChance, int generation)
     {
         transform.position = position;
         transform.localScale = scale;
         CurrentSplitChance = splitChance;
         Generation = generation;
-
-        Color color = _colorChanger.GenerateColor();
-        _renderer.material.color = color;
     }
 
-    public bool CanSplit(Cube cube)
-        => UnityEngine.Random.Range(0, _maxSplitChance) <= cube.CurrentSplitChance;
-
-    private void Awake()
-    {
-        _renderer = GetComponent<Renderer>();
-        CubeRigidbody = GetComponent<Rigidbody>();
-        _colorChanger = GetComponent<ColorChanger>();
-    }
+    public bool CanSplit()
+        => Random.Range(0, _maxSplitChance) <= CurrentSplitChance;
 }
